@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type INewsState } from '../../utils/interface/newsInterface';
 import { lastNewsAction, pageNewsAction, newsAction } from '../actions/newsAction';
+import { defaultPending } from '../../utils/slice/defaultPending';
+import { defaultRejected } from '../../utils/slice/defaultRejected';
 
 
 const initialState: INewsState = {
@@ -49,8 +51,7 @@ const newsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(lastNewsAction.pending, (state: INewsState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(lastNewsAction.fulfilled, (state: INewsState, action) => {
         state.lastNews = action.payload;
@@ -63,12 +64,10 @@ const newsSlice = createSlice({
         });
       })
       .addCase(lastNewsAction.rejected, (state: INewsState, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+        defaultRejected(state, action);
       })
       .addCase(pageNewsAction.pending, (state: INewsState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(pageNewsAction.fulfilled, (state: INewsState, action) => {
         state.pageNews = action.payload;
@@ -81,12 +80,10 @@ const newsSlice = createSlice({
         });
       })
       .addCase(pageNewsAction.rejected, (state: INewsState, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+        defaultRejected(state, action);
       })
       .addCase(newsAction.pending, (state: INewsState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(newsAction.fulfilled, (state: INewsState, action) => {
         if (action.payload.alreadyInStore) {
@@ -96,8 +93,7 @@ const newsSlice = createSlice({
         }
       })
       .addCase(newsAction.rejected, (state: INewsState, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+        defaultRejected(state, action);
       });
   },
 });

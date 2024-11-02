@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { type IEventState } from '../../utils/interface/eventInterface';
 import { DEFAULT_EVENT } from '../../utils/constans/defaultEventConstans';
 import { lastEventsAction, dailyEventsAction, eventAction } from '../actions/eventAction';
+import { defaultPending } from '../../utils/slice/defaultPending';
+import { defaultRejected } from '../../utils/slice/defaultRejected';
 
 const initialState: IEventState = {
   lastEvents: [ DEFAULT_EVENT ],
@@ -20,8 +22,7 @@ const eventSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(lastEventsAction.pending, (state: IEventState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(lastEventsAction.fulfilled, (state: IEventState, action) => {
         state.lastEvents = [];
@@ -36,12 +37,10 @@ const eventSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(lastEventsAction.rejected, (state: IEventState, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
+        defaultRejected(state, action);
       })
       .addCase(dailyEventsAction.pending, (state: IEventState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(dailyEventsAction.fulfilled, (state: IEventState, action) => {
         state.dayEvents = [];
@@ -56,12 +55,10 @@ const eventSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(dailyEventsAction.rejected, (state: IEventState, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
+        defaultRejected(state, action);
       })
       .addCase(eventAction.pending, (state: IEventState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(eventAction.fulfilled, (state: IEventState, action) => {
         if (action.payload.alreadyInStore) {
@@ -71,8 +68,7 @@ const eventSlice = createSlice({
         }
       })
       .addCase(eventAction.rejected, (state: IEventState, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+        defaultRejected(state, action);
       });
   },
 });

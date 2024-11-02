@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { type IDisciplineState } from '../../utils/interface/disciplineInterface';
 import { disciplinesNames, disciplineContent } from '../actions/disciplineAction';
 import { DEFAULT_DISCIPLINE } from '../../utils/constans/defaultDisciplineConstans';
+import { defaultPending } from '../../utils/slice/defaultPending';
+import { defaultRejected } from '../../utils/slice/defaultRejected';
 
 
 const initialState: IDisciplineState = {
@@ -23,8 +25,7 @@ const disciplineSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(disciplinesNames.pending, (state: IDisciplineState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(disciplinesNames.fulfilled, (state: IDisciplineState, action) => {
         state.disciplines = [];
@@ -41,12 +42,10 @@ const disciplineSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(disciplinesNames.rejected, (state: IDisciplineState, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+        defaultRejected(state, action);
       })
       .addCase(disciplineContent.pending, (state: IDisciplineState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
         if (state.currentDiscipline.name != '') {
           const disciplineIndex = state.disciplines.findIndex(discipline => discipline.name === state.currentDiscipline.name);
           state.disciplines[disciplineIndex].isCurrentDiscipline = false;
@@ -65,8 +64,7 @@ const disciplineSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(disciplineContent.rejected, (state: IDisciplineState, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
+        defaultRejected(state, action);
       });
   },
 });

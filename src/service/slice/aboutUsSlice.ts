@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { type IAboutUsState } from '../../utils/interface/aboutUsInterface';
 import { DEFAULT_ABOUT_US } from '../../utils/constans/defaultAboutUsConstans';
 import { aboutUsAction } from '../actions/aboutUsAction';
+import { defaultPending } from '../../utils/slice/defaultPending';
+import { defaultRejected } from '../../utils/slice/defaultRejected';
 
 const initialState: IAboutUsState = {
   aboutUs: DEFAULT_ABOUT_US,
@@ -17,8 +19,7 @@ const aboutUsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(aboutUsAction.pending, (state: IAboutUsState) => {
-        state.error = '';
-        state.isLoading = true;
+        defaultPending(state);
       })
       .addCase(aboutUsAction.fulfilled, (state: IAboutUsState, action) => {
         state.aboutUs = action.payload;
@@ -26,8 +27,7 @@ const aboutUsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(aboutUsAction.rejected, (state: IAboutUsState, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
+        defaultRejected(state, action);
       });
   },
 });
