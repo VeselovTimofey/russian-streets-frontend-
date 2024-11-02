@@ -4,6 +4,7 @@ export interface IDiscipline {
   description: string,
   rules: string,
   isfull?: boolean,
+  isCurrentDiscipline?: boolean,
 }
 
 export interface IDisciplineState {

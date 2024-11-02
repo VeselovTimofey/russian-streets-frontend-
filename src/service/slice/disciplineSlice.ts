@@ -23,75 +23,50 @@ const disciplineSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(disciplinesNames.pending, (state: IDisciplineState) => {
-        const newState = {
-          ...state,
-          error: '',
-          isLoading: true,
-        };
-        return newState;
+        state.error = '';
+        state.isLoading = true;
       })
       .addCase(disciplinesNames.fulfilled, (state: IDisciplineState, action) => {
-        const newState: IDisciplineState = {
-          ...state,
-          disciplines: [],
-          isLoading: false,
-        };
+        state.disciplines = [];
         action.payload.forEach((element) => {
-          newState.disciplines.push({
+          state.disciplines.push({
             name: element.name,
             imagesUrl: [''],
             description: '',
             rules: '',
             isfull: false,
+            isCurrentDiscipline: false,
           });
         });
-        return newState;
+        state.isLoading = false;
       })
       .addCase(disciplinesNames.rejected, (state: IDisciplineState, action) => {
-        const newState = {
-          ...state,
-          isLoading: false,
-          error: action.payload,
-        };
-        return newState;
+        state.isLoading = false;
+        state.error = action.payload;
       })
       .addCase(disciplineContent.pending, (state: IDisciplineState) => {
-        const newState = {
-          ...state,
-          error: '',
-          isLoading: true,
-        };
-        return newState;
+        state.error = '';
+        state.isLoading = true;
+        if (state.currentDiscipline.name != '') {
+          const disciplineIndex = state.disciplines.findIndex(discipline => discipline.name === state.currentDiscipline.name);
+          state.disciplines[disciplineIndex].isCurrentDiscipline = false;
+        }
       })
       .addCase(disciplineContent.fulfilled, (state: IDisciplineState, action) => {
-        const newState = {
-          ...state,
-          isLoading: false,
-          disciplines: state.disciplines.map(discipline => discipline),
-          currentDiscipline: {
-            name: '',
-            imagesUrl: [''],
-            description: '',
-            rules: '',
-          },
-        };
-        const disciplineIndex = newState.disciplines.findIndex(discipline => discipline.name === action.payload[0].name);
-        if (newState.disciplines[disciplineIndex].isfull) {
-          newState.currentDiscipline = newState.disciplines[disciplineIndex];
+        const disciplineIndex = state.disciplines.findIndex(discipline => discipline.name === action.payload[0].name);
+        if (state.disciplines[disciplineIndex].isfull) {
+          state.currentDiscipline = state.disciplines[disciplineIndex];
+          state.disciplines[disciplineIndex].isCurrentDiscipline = true;
         } else {
-          newState.currentDiscipline = newState.disciplines[disciplineIndex] = action.payload[0];
-          newState.disciplines[disciplineIndex].isfull = true;
-        } 
-        newState.isLoading = false;
-        return newState;
+          state.currentDiscipline = state.disciplines[disciplineIndex] = action.payload[0];
+          state.disciplines[disciplineIndex].isfull = true;
+          state.disciplines[disciplineIndex].isCurrentDiscipline = true;
+        }
+        state.isLoading = false;
       })
       .addCase(disciplineContent.rejected, (state: IDisciplineState, action) => {
-        const newState = {
-          ...state,
-          isLoading: false,
-          error: action.payload,
-        };
-        return newState;
+        state.error = action.payload;
+        state.isLoading = false;
       });
   },
 });

@@ -1,27 +1,34 @@
-import { ReactElement } from 'react';
-import { type IDisciplinesButtons } from '../../utils/interface/disciplineInterface';
-//import { FindDiscipline } from '../../service/actions/disciplineAction';
-import { disciplines } from '../../utils/constans/disciplinesPathConstant';
+import { useAppDispatch, useAppSelector } from '../../service/hooks/hooks';
+import { disciplineContent } from '../../service/actions/disciplineAction';
+import { DEFAULT_DISCIPLINE } from '../../utils/constans/defaultDisciplineConstans';
 
 function Navbar() {
-  /* function handleClick(name: string) {
-    FindDiscipline(name);
-  } */
+  const dispatch = useAppDispatch();
+
+  const disciplines = useAppSelector(
+    state => state.discipline.disciplines,
+  );
+  const onDisciplinesChange: React.MouseEventHandler<HTMLButtonElement> = (e) => dispatch(
+    disciplineContent(disciplines.find(discipline => discipline.name === (e.target as HTMLButtonElement).name) || DEFAULT_DISCIPLINE),
+  );
 
   return (
-    <ul className="disciplines__list">
-      {disciplines.map((item: IDisciplinesButtons): ReactElement => {
-        return (
-          <li
-            className="disciplines__element text-font text-font_regular text-font_size_big"
-            key={item.name}
-            //onClick={() => handleClick(item.name)}
-          >
-            {item.name}
-          </li>
-        );
-      })}
-    </ul>
+    <section className="disciplines__list">
+      {disciplines.map(discipline => (
+        <button
+          className=
+          {
+            discipline.isCurrentDiscipline
+              ? 'disciplines__element disciplines__element_active text-font text-font_regular text-font_size_big' 
+              : 'disciplines__element text-font text-font_regular text-font_size_big'
+          }
+          onClick={onDisciplinesChange}
+          name={discipline.name}
+        >
+          {discipline.name}
+        </button>
+      ))}
+    </section>
   );
 }
 
