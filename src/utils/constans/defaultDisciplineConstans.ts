@@ -5,7 +5,7 @@ const DEFAULT_DISCIPLINE: IDiscipline = {
   imagesUrl: [''],
   description: '',
   rules: '',
-  isfull: true,
+  isfull: false,
 }
 
 export { DEFAULT_DISCIPLINE };

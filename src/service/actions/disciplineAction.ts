@@ -27,9 +27,12 @@ const disciplineContent = createAsyncThunk<IDiscipline[], IDiscipline, { rejectV
       return [discipline];
     }
     try {
+      if (discipline.name === '') {
+        throw new Error('Не удалось получить дисциплину.');
+      }
       const response = await getFullContentofDiscipline(discipline.name);
       if (!response.ok) {
-        throw new Error('Не удалось получить иноформацию о дисциплине.');
+        throw new Error('Не удалось получить дисциплину.');
       }
       const data = await response.json();
       return data;
@@ -37,7 +40,7 @@ const disciplineContent = createAsyncThunk<IDiscipline[], IDiscipline, { rejectV
       if (error instanceof Error) {
         return rejectWithValue(error.message);
       }
-      return rejectWithValue('Не удалось получить название дисциплин.');
+      return rejectWithValue('Не удалось получить дисциплину.');
     }
   },
 );
