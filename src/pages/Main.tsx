@@ -12,7 +12,6 @@ import Disciplines from '../components/Disciplines.tsx';
 import Registration from '../components/Registration.tsx';
 import { useAppDispatch, useAppSelector } from '../service/hooks/hooks';
 import { aboutUsAction } from '../service/actions/aboutUsAction';
-import { disciplinesNames } from '../service/actions/disciplineAction';
 
 function Main() {
   const dispatch = useAppDispatch();
@@ -21,25 +20,17 @@ function Main() {
   );
   useEffect(() => {
     dispatch(aboutUsAction(aboutUs));
-    dispatch(disciplinesNames());
-  }, [dispatch]);
-  
-  const disciplines = useAppSelector(
-    state => state.discipline.disciplines,
-  );
-  const currentDiscipline = useAppSelector(
-    state => state.discipline.currentDiscipline,
-  );
+  }, []);
 
   return (
     <main className='main'>
       <Intro />
       <Agency />
       <Disciplines />
-      <Members ourMember={aboutUs.aboutUs.ourMember} />
+      <Members />
       <AboutUs />
       <OurOffers />
-      <OurPossibilities partners={aboutUs.aboutUs.partners} />
+      <OurPossibilities />
       <UpcomingEvents />
       <LastNews isSixNews={true} />
       <Registration />

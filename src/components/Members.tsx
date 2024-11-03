@@ -1,16 +1,16 @@
-import { type IMember } from '../utils/interface/aboutUsInterface';
+import { useAppSelector } from '../service/hooks/hooks';
 import MemberCard from './elements/MemberCard.tsx';
 
-type InputProps = {
-  ourMember: IMember[],
-};
+function Members() {
 
-function Members(props: InputProps) {
+  const ourMember = useAppSelector(
+    state => state.aboutUs.aboutUs.ourMember,
+  );
 
   return (
     <section className="members section section_grid-column">
       <h1 className="members__title title-font title-font_regular title-font_size_medium">Наши участники</h1>
-      {props.ourMember.map((member) => {
+      {ourMember.map((member) => {
         return (
           <MemberCard
             key={member.id}

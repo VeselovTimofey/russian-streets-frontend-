@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../service/hooks/hooks';
-import { disciplineContent } from '../../service/actions/disciplineAction';
+import { disciplineContent, disciplinesNames } from '../../service/actions/disciplineAction';
 import { DEFAULT_DISCIPLINE } from '../../utils/constans/defaultDisciplineConstans';
 
 function Navbar() {
   const dispatch = useAppDispatch();
+  
+  useEffect(() => {
+    dispatch(disciplinesNames());
+  }, []);
 
   const disciplines = useAppSelector(
     state => state.discipline.disciplines,
