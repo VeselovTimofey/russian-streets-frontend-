@@ -16,7 +16,7 @@ const initialState: IEventState = {
 };
 
 const eventSlice = createSlice({
-  name: 'news',
+  name: 'events',
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {

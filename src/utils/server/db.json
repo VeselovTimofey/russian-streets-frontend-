@@ -318,5 +318,51 @@
       }
     ],
     "videoUrl": "video"
-  }
+  },
+  "events": [
+    {
+      "id": "0",
+      "name": "Граффити Бит",
+      "description": "Соревнования и мастер-классы по street art, где улица становится полотном для творчества.",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/39fe/28eb/140cf79f975517ed816e743b70f96ca8?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Esqyg7AOCz1~Pd6PzDXXCZ7JOYa6zt876BbukQZewzmM~O6LXah9dUe06h83wjksp0hWbQj7myLT3t42UUqO~t0I3i4c8jSZDXkeno2lkBb6MsFRYRWw6delzQUyWyUuRlQ89YmUqZr2R~KNJAcdtAk4uCSvWTkY0KDEDWVTBC2FaFFgplKdJYQ1lf7mSAVfWPpk5dArO5zre7k7MdOeIN9yOKxB3LhNzPstqK33RAygZ2PH9xOlhbtRROayH9rGTiFjFaQupWv5o3OeXmS9Spkyg~1~-n5G4FIS9yWjF9HwUye3MHyADNQj9QMj08Jk1qikXoF-0FNPGTt0EPTsfw__",
+      "place": "Москва",
+      "startDate": "03/июня/2024",
+      "discipline": "Street art",
+      "rules": "Соревнования и мастер-классы по street art, где улица становится полотном для творчества.",
+      "deadlineRegistrationDate": "01/июня/2024"
+    },
+    {
+      "id": "1",
+      "name": "Ритмы Асфальта",
+      "description": "Фестиваль уличных танцев, собирающий танцоров разных стилей для обмена опытом и мастерством.",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/8dbb/47cf/d04ddb9971ce482bb63480c8692e872c?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=S4lV7zSDiD3EKPCxHL4R~sSg-YJKaCfKjy7SEJarDitiegnBR54jgSCyGooJcgoJWD6SfeI6K3QgvJqRh~5w7Tk7roSALLfK-apdEiSlbHD2WoDftuzDnlozHTp27B6e5lhYXl1Ts00~79uxUy22TxQaXVbbTyD93jlG~vZ3WjVRqXadstw3yF7vDrtHT9KVaHO0AfqXql8~TbhYOc8nF9thg4oBIm1xhDQqvv54y-ZzCk5bgmuWukFjHVF22~2~IweLv5E3YhQEMTPUWi3vGqPrD95r6nkJefnikB~DOWCvjZNY18ebcdxujFvaFJzHgOie05ptIX~e8ua2yOjndQ__",
+      "place": "Москва",
+      "startDate": "14/июня/2024",
+      "discipline": "Hip-Hop dance",
+      "rules": "Фестиваль уличных танцев, собирающий танцоров разных стилей для обмена опытом и мастерством.",
+      "deadlineRegistrationDate": "10/июня/2024"
+    },
+    {
+      "id": "2",
+      "name": "Скейт и Стиль",
+      "description": "Скейтборд-фестиваль, где участники могут показать свои трюки и стиль на специально оборудованных площадках.",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/d1c7/cc11/a50a618180a2393fdc49bf7346b7b076?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=D38NDwEKMbhpJOip9IKOT34AShkyB5jyCy3dmEzQYW8MxszYhEuf6IOt92ZZ3tx8k1yGNqQyy7XSI1-xGY8KOIBOkCb0F8ZDNYw5~JG9--IjMOI173ckDhINDN9mFn3YYmcd1KfXeIZlrxlQDGhqcHLY4kCN8bzeYii9M01Rgr9RW6mYb7jkxQGevZI6o2br1VAky09jPLbCnCBFAQpBpsOyZgAK6~v-SnznE6I6fedOUzUnZ9HV7ao09M-zB~5icwPmMzgC0MDksg7kS7Q1q~Wr~MqlnZVQ-SpqMUWd7U07mO2b76M15A0ftV8QKIG-P1~tVYDAPvvEXaAtIO0-4w__",
+      "place": "Москва",
+      "startDate": "10/июня/2024",
+      "discipline": "Skateboarding",
+      "rules": "Скейтборд-фестиваль, где участники могут показать свои трюки и стиль на специально оборудованных площадках.",
+      "deadlineRegistrationDate": "8/июня/2024"
+    },
+    {
+      "id": "3",
+      "name": "Хип-Хоп Вайбс",
+      "description": "Вечер живого хип-хопа, где каждый может выразить себя через музыку, танец и граффити.",
+      "imageUrl": "https://s3-alpha-sig.figma.com/img/59ae/6837/4fd1397a5e620d1fb9f080120c672a55?Expires=1731283200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=kmCE4q0zx-IaAblXU35rawJHfyUUbX2FXBIA12FK67bQddKnMdr66zUcv4IZfhjg4aOJxF8ra~~2KZGDpxY0D0siF-Tnw1YoNva3Sx70No1ZFr1KD0cdhSFOXvL~Df1aYSJHPUrrVtsce0OPARNfAd5nJAn6kWjab2v-~ikxg0SdV0nuaoh92R7BXslIG-pjV41DeeXCM-kej0fRTg5976JE0fZjQlDx9uYSPVZmBfyPzqndGDFD09mYNQ1KmUdBT8S1jLMtd0ewwdjPu9bHNCoapZTN8lJNhdr7XCQfoSx-iAn-Yo5dgpzVLlixrySqgomgdrQzevQae3T1AgKFHw__",
+      "place": "Москва",
+      "startDate": "24/июня/2024",
+      "discipline": "Hip-Hop dance",
+      "rules": "Вечер живого хип-хопа, где каждый может выразить себя через музыку, танец и граффити.",
+      "deadlineRegistrationDate": "20/июня/ 2024"
+    }
+  ]
 }
