@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux'; 
 
-import { type AppDispatch } from '../utils/types/storeTypes';
 import { disciplinesNames, disciplineContent } from '../service/actions/disciplineAction';
-import { useAppSelector } from '../service/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../service/hooks/hooks';
 import { DEFAULT_DISCIPLINE } from '../utils/constans/defaultDisciplineConstans';
 import RegisterForm from '../components/elements/RegisterForm.tsx';
+import LastNews from '../components/LastNews.tsx';
 
 function Test() {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(disciplinesNames());
   }, [dispatch]);
@@ -44,6 +43,7 @@ function Test() {
         <h2 style={{ color: 'white' }}>Регистрация</h2>
         <RegisterForm />
       </section>
+      <LastNews isSixNews={true} />
     </main>
   );
 }

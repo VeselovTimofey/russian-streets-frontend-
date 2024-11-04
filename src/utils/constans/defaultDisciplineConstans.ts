@@ -1,11 +1,11 @@
-import { IDiscipline } from "../interface/disciplineInterface";
+import { type IDiscipline } from "../interface/disciplineInterface";
 
 const DEFAULT_DISCIPLINE: IDiscipline = {
   name: '',
   imagesUrl: [''],
   description: '',
   rules: '',
-  isfull: true,
+  isfull: false,
 }
 
-export {DEFAULT_DISCIPLINE};
+export { DEFAULT_DISCIPLINE };

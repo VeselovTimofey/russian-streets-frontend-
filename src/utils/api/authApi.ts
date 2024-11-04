@@ -1,4 +1,4 @@
-import { IUser, ILoginCredentials } from "../../service/utils/types";
+import { IUser, ILoginCredentials } from '../interface/userInterface';
 import api from "./api";
 
 async function signUpApi(user: IUser) {

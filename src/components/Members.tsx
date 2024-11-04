@@ -1,21 +1,26 @@
-import membersJson from '../utils/json/members.json';
+import { useAppSelector } from '../service/hooks/hooks';
 import MemberCard from './elements/MemberCard.tsx';
 
 function Members() {
-  const member = JSON.parse(JSON.stringify(membersJson));
+
+  const ourMember = useAppSelector(
+    state => state.aboutUs.aboutUs.ourMember,
+  );
 
   return (
     <section className="members section section_grid-column">
       <h1 className="members__title title-font title-font_regular title-font_size_medium">Наши участники</h1>
-      {Object.keys(member).map((keyName, i) => (
-        <MemberCard
-          key={i}
-          imageurl={member[keyName].imageurl}
-          profession={member[keyName].profession}
-          name={member[keyName].name}
-          description={member[keyName].description}
-        />
-      ))}
+      {ourMember.map((member) => {
+        return (
+          <MemberCard
+            key={member.id}
+            imageurl={member.imageUrl}
+            profession={member.role}
+            name={member.name}
+            description={member.description}
+          />
+        );
+      })}
     </section>
   );
 }

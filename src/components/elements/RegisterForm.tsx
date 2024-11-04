@@ -1,17 +1,18 @@
 import { ChangeEventHandler, useCallback, useId } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
 
 import Input from './Input.tsx';
 import { type IRegistrationData, type TBoolChangeInput, type TStringChangeInput } from '../../utils/interface/userInterface';
 import { BUTTON_CLASS } from '../../utils/constans/buttonConstans';
-import { type AppDispatch, type RootState } from '../../utils/types/storeTypes';
 import { userSignUp } from '../../service/actions/userActions';
 import { registrationDataChange } from '../../service/slice/userSlice';
+import { useAppDispatch, useAppSelector } from '../../service/hooks/hooks';
 
 function RegisterForm() {
-  const dispatch = useDispatch<AppDispatch>();
-  const { user } = useSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(
+    state => state.user.user,
+  );
 
   const id: string = useId();
 

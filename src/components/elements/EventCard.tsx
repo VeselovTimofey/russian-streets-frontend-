@@ -1,11 +1,11 @@
 import MoreLink from './MoreLink.tsx';
 
 type InputProps = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image_url: string;
-  start_date: string;
+  start_date: string | undefined;
   place: string;
 };
 

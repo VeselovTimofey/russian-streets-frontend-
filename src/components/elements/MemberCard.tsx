@@ -1,5 +1,5 @@
 type InputProps = {
-  key: number;
+  key: string;
   imageurl: string;
   profession: string;
   name: string;
