@@ -16,7 +16,9 @@ function Contents() {
   );
 
   useEffect(() => {
-    dispatch(disciplineContent(disciplines[0]));
+    if (disciplines[0].name != '') {
+      dispatch(disciplineContent(disciplines[0]));
+    }
   }, [disciplines[0].name]);
 
   return (
